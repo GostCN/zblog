@@ -1,0 +1,330 @@
+#talk_zxy textarea,#talk_zxy input {
+    outline:none;
+    font-family:微软雅黑,"Microsoft YaHei";
+    color:#333;
+    font-size:14px
+}
+#talk_zxy input[type='text'],#talk_zxy input[type='password'] {
+    text-indent:10px
+}
+#talk_zxy ol,#talk_zxy ul {
+    list-style:none
+}
+#talk_zxy blockquote:before,blockquote:after,#talk_zxy q:before,#talk_zxy q:after {
+    content:'';
+    content:none
+}
+#talk_zxy .row:before,.row:after {
+    content:'\0020';
+    display:block;
+    clear:both;
+    overflow:hidden;
+    visibility:hidden;
+    width:0;
+    height:0
+}
+#talk_zxy button {
+    font-family:微软雅黑,"Microsoft YaHei"
+}
+#talk_zxy a {
+    text-decoration:none
+}
+#talk_zxy .clearfix:before,.clearfix:after {
+    content:".";
+    display:block;
+    height:0;
+    visibility:hidden
+}
+#talk_zxy .clearfix:after {
+    clear:both
+}
+#talk_zxy .clearfix {
+    zoom:1
+}
+/*#talk_zxy {*/
+    /*position:fixed;*/
+    /*left:-350px;*/
+    /*bottom: 40px;*/
+    /*width: 350px;*/
+    /*height: 300px;*/
+    /*padding-top:10px;*/
+    /*background-color:#fff;*/
+    /*-webkit-border-radius:3px;*/
+    /*-moz-border-radius:3px;*/
+    /*border-radius:3px;*/
+    /*font-size:14px;*/
+    /*-webkit-transition:0.5s;*/
+    /*-moz-transition:0.5s;*/
+    /*transition:0.5s;*/
+    /*z-index:1000;*/
+    /*box-shadow:0 0 5px 5px rgba(0,0,0,0.2);*/
+    /*border-radius:5px!important;*/
+/*}*/
+#talk_zxy{
+    position: fixed;
+    bottom: 15px;
+    width: 0px;
+    height: 78px;
+    padding-top: 10px;
+    background: rgba(0,0,0,0.1);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 14px;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+    z-index: 1000;
+    box-shadow: 0 0 5px 5px rgba(0,0,0,0.2);
+}
+/*#talk_zxy .z_tag {*/
+    /*!*right:-25px;*!*/
+    /*!*top:0px;*!*/
+    /*!*width:25px;*!*/
+    /*!*height:68px;*!*/
+    /*!*line-height:68px;*!*/
+    /*!*text-shadow:none;*!*/
+    /*!*position:absolute;*!*/
+    /*!*cursor:pointer;*!*/
+    /*!*box-shadow:1px 1px 1px 1px rgba(0,0,0,0.3);*!*/
+    /*!*border-radius:0 5px 5px 0!important;*!*/
+    /*!*font-size:2em;*!*/
+    /*!*text-align:center;*!*/
+/*}*/
+#talk_zxy .z_tag {
+    right: -25px;
+    top: 9px;
+    width: 25px;
+    height: 68px;
+    line-height: 68px;
+    text-shadow: none;
+    position: absolute;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.3);
+    border-radius: 0 5px 5px 0px!important;
+    font-size: 2em;
+    text-align: center;
+    background: rgba(197, 183, 174, 0.3);
+}
+#talk_zxy .z_tag i {
+    /*position: absolute;*/
+    /*top: -2px;*/
+    /*left: 25px;*/
+}
+#talk_zxy .z_tag.active {
+}#talk_zxy .z_talk_wap {
+     position: relative;
+     min-height: 242px;
+     width: 100%;
+     overflow-y: scroll;
+ }
+#talk_zxy .z_talk_content {
+    position:absolute;
+    width:100%;
+    max-height: 162px;
+    top:0;
+    left:0
+}
+#talk_zxy .z_talk_content .z_list_wap {
+    overflow:hidden;
+    margin-top:20px
+}
+#talk_zxy .z_talk_content .z_l_con {
+    word-wrap:break-word;
+    word-break:break-all;
+    float:left;
+    /*margin-left:16px;*/
+    padding:8px 10px;
+    line-height:18px;
+    background-color:#ffffff;
+    color:#333;
+    max-width: 258px;
+    -webkit-border-radius:15px 0px 15px 0px!important;
+    -moz-border-radius:15px 0px 15px 0px!important;
+    border-radius: 15px 0px 15px 0px!important;
+}
+.robot-img{
+    float: left;
+    width: 37px;
+    height: 33px;
+    display: block;
+    background: url(/images/logo_72x72.png);
+    background-position: 3px -2px;
+    background-size: 34px;
+    border-radius: 50%!important;
+}
+.user-img{
+    float: right;
+    width: 37px;
+    height: 33px;
+    display: block;
+    background: url(/images/1.jpg);
+    background-position: 3px -2px;
+    background-size: 34px;
+    border-radius: 50%!important;
+}
+#talk_zxy .z_talk_content .z_l_img {
+    float:left;
+    margin-left:16px;
+    padding:8px 10px;
+    background-color:#f1f1f1;
+    color:#333;
+    width:168px;
+    height:126px;
+    -webkit-border-radius:8px;
+    -moz-border-radius:8px;
+    border-radius:8px
+}
+#talk_zxy .z_talk_content .z_l_msg {
+    margin-left: 38px;
+    padding:8px 10px;
+    background-color:#f1f1f1;
+    color:#333;
+    /*width:168px;*/
+    /*height:85px;*/
+    -webkit-border-radius:8px;
+    -moz-border-radius:8px;
+    border-radius:8px
+}
+#talk_zxy .z_talk_content .z_l_img .z_ptit,#talk_zxy .z_talk_content .z_l_msg .z_ptit {
+    line-height:18px
+}
+#talk_zxy .z_talk_content .z_l_img .z_img_wap {
+    width:100%;
+    height:126px;
+    background-color:#fff
+}
+#talk_zxy .z_talk_content .z_l_img img {
+    display:block;
+    width:168px;
+    height:62px;
+    margin-bottom:-18px
+}
+#talk_zxy .z_talk_content .z_l_img .z_img_msg {
+    display:block;
+    line-height:18px;
+    background-color:rgba(0,0,0,0.5);
+    color:#fff;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap
+}
+#talk_zxy .z_talk_content .z_l_img .z_atit,#talk_zxy .z_talk_content .z_l_msg  .z_atit {
+    display:block;
+    text-indent:10px;
+    padding-top:12px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    font-size:12px;
+    color:#8e8c8c
+}
+#talk_zxy .z_msg_wap {
+    width:100%;
+    /*height:84px;*/
+    background-color:#fff
+}
+#talk_zxy .z_talk_content .z_r_con {
+    word-wrap:break-word;
+    word-break:break-all;
+    float:right;
+    /*margin-right:16px;*/
+    padding:8px 10px;
+    line-height:18px;
+    background-color:#5fbf5e;
+    color:#fff;
+    max-width: 258px;
+    -webkit-border-radius:15px 0px 15px 0px!important;
+    -moz-border-radius:15px 0px 15px 0px!important;
+    border-radius:15px 0px 15px 0px!important;
+}
+#talk_zxy .z_send_wap {
+    width: 94%;
+    height:38px;
+    margin:5px auto 0;
+    background-color:#dce4ec;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px
+}
+#talk_zxy .z_send_wap.active {
+    background-color:#5fbf5e;
+}
+#talk_zxy .z_send_wap input {
+    float:left;
+    width:273px;
+    height:36px;
+    line-height:36px;
+    margin-top:1px;
+    margin-left:2px;
+    background-color:#fff;
+    border:none;
+    text-indent:10px;
+    color:#333;
+    padding-right: 130px;
+}
+#talk_zxy .z_send_wap .z_sed_btn {
+    float:right;
+    width:48px;
+    height:38px;
+    line-height:38px;
+    text-align:center;
+    color:#fff;
+    font-size:14px
+}
+#talk_zxy .z_scrol_wap {
+    position:absolute;
+    right:2px;
+    width:4px;
+    top:10px;
+    bottom:70px;
+    z-index:5
+}
+#talk_zxy .z_scroll_con {
+    position:absolute;
+    left:0px;
+    width:4px;
+    background-color:#8ca0b3;
+    top:0px;
+    height:40px
+}
+
+#talk_zxy ol, #talk_zxy ul {
+    -webkit-padding-start: 5px!important;
+}
+
+/*示例选项*/
+#talk_zxy .eg-option{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 258px;
+    right: 64px;
+    background-color: rgba(255, 255, 255, .5);
+}
+#talk_zxy .eg-option a{
+    display: inline-block;
+    background: #F5F5F5;
+    margin: 3px 5px 3px 0;
+    padding: 5px;
+}
+/*示例选项*/
+
+.alert-msg{
+    top: 5px;
+    margin: 0 14px;
+    padding: 0px 5px;
+    width: 90%;
+    position: absolute;
+    border-radius: 5px!important;
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    border: 1px solid transparent;
+    z-index: 2;
+}
+.alert-msg i {
+    margin-right: 5px;
+}

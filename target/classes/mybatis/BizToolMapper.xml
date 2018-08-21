@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.cchcz.blog.dao.mapper.BizToolMapper">
+    <resultMap id="rm" type="com.cchcz.blog.dao.beans.BizTool">
+        <result property="id" jdbcType="BIGINT" column="id"/>
+        <result property="typeId" jdbcType="BIGINT" column="type_id"/>
+        <result property="name" jdbcType="VARCHAR" column="name"/>
+        <result property="description" jdbcType="VARCHAR" column="description"/>
+        <result property="imageIcon" jdbcType="VARCHAR" column="image_icon"/>
+        <result property="outLink" jdbcType="VARCHAR" column="out_link"/>
+        <result property="createTime" jdbcType="TIMESTAMP" column="create_time"/>
+        <result property="updateTime" jdbcType="TIMESTAMP" column="update_time"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+		id,
+        type_id,
+        name,
+        description,
+        image_icon,
+        out_link,
+		create_time,
+		update_time
+	</sql>
+
+    <select id="findPageBreakByCondition" parameterType="com.cchcz.blog.model.vo.ToolConditionVO"
+            resultMap="rm">
+        SELECT
+        t.*
+        FROM
+        biz_tool t
+        WHERE
+        1 = 1
+        <if test="name != null">
+            AND t.name = #{name}
+        </if>
+        <if test="description != null">
+            AND t.description = #{description}
+        </if>
+        <if test="imageIcon != null">
+            AND t.image_icon = #{imageIcon}
+        </if>
+        <if test="outLink != null">
+            AND t.out_link = #{outLink}
+        </if>
+        <if test="typeId != null">
+            AND t.type_id = #{typeId}
+        </if>
+        <if test="id != null">
+            AND t.id = #{id}
+        </if>
+    </select>
+</mapper>
+

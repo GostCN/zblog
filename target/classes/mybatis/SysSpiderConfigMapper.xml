@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cchcz.blog.dao.mapper.SysSpiderConfigMapper">
+    <resultMap id="rm" type="com.cchcz.blog.dao.beans.SysSpiderConfig">
+        <result column="id" property="id" jdbcType="BIGINT"/>
+        <result column="net_name" property="netName" jdbcType="VARCHAR"/>
+        <result column="net_eng" property="netEng" jdbcType="VARCHAR"/>
+        <result column="parse_title" property="parseTitle" jdbcType="BLOB"/>
+        <result column="parse_keywords" property="parseKeywords" jdbcType="BLOB"/>
+        <result column="parse_content" property="parseContent" jdbcType="BLOB"/>
+        <result column="update_time" property="updateTime" jdbcType="CHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,
+        net_name,
+        net_eng,
+        parse_title,
+        parse_keywords,
+        parse_content,
+        update_time
+    </sql>
+</mapper>
+

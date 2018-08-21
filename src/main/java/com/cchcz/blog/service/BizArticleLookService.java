@@ -1,0 +1,29 @@
+
+package com.cchcz.blog.service;
+
+
+import com.cchcz.blog.model.entity.ArticleLook;
+import com.cchcz.blog.model.object.AbstractService;
+import com.cchcz.blog.model.vo.ArticleLookConditionVO;
+import com.github.pagehelper.PageInfo;
+
+/**
+ * 文章浏览记录
+ *
+ * @author cchcz
+ * @version 1.0
+ * @date 2018/4/16 16:26
+ * @since 1.0
+ */
+public interface BizArticleLookService extends AbstractService<ArticleLook, Integer> {
+
+    /**
+     * 分页查询
+     *
+     * @param vo
+     * @return
+     */
+    PageInfo<ArticleLook> findPageBreakByCondition(ArticleLookConditionVO vo);
+
+    void addArticleLook(ArticleLook entity);
+}

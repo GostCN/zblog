@@ -1,0 +1,19 @@
+#js_visitor_map {
+    position: relative;
+}
+
+.marker_animation {
+    position: absolute;
+    opacity: 0;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    /* 40px radius, move origin to center */
+    height: 60px;
+    width: 60px;
+    margin-top: -32px;
+    margin-left: -32px;
+    pointer-events: none; /* dont kill the hover event of markers */
+    -webkit-transform: translateZ(0); /* little trick to force GPU acceleration */
+    background: #009a61;
+    border: 2px solid #FFF;
+}

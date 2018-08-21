@@ -1,0 +1,95 @@
+.g-nav {
+	padding: 0 5px;
+	background-color: #363636;
+	/*overflow: hidden;*/
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14px;
+}
+
+.g-nav:before,
+	.g-nav:after {
+	content: " ";
+	display: table;
+}
+
+.g-nav:after {
+	clear: both;
+}
+
+.g-nav a {
+  position: relative;
+	display: inline-block;
+	padding: 0 12px;
+	height: 29px;
+	line-height: 29px;
+	color: #CCC;
+	text-decoration: none;
+}
+
+.g-nav a:hover, .g-nav > ul > li:hover > a {
+	color: #CCC;
+	background-color: #464646;	
+}
+
+.g-nav .toolList a:hover {
+	color: #fff;
+}
+
+.g-nav ul {
+	margin: 0;
+	padding: 0;
+}
+
+.g-nav > ul > li {
+	float: left;
+	display: inline;
+	margin: 0;
+	list-style: none;
+}
+
+.dropdown {
+	position: relative;
+	z-index: 8;
+	width: auto;
+}
+
+.dropdown img {
+	vertical-align: top;
+}
+
+.dropdown ul {
+	display: none;
+	position: absolute;
+	top: 29px;
+	left: 0;
+	z-index: 9;
+	background-color: #fff;
+	width: 100px;
+	padding-bottom: 5px;
+	box-shadow: 0 0 5px;
+}
+
+.dropdown:hover ul {
+	display: block;
+}
+
+.dropdown ul li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.dropdown ul li a {
+	display: block;
+	background: #fff;
+	color: #444;
+}
+
+.dropdown ul li a:hover {
+	background: #f5f5f5;
+	color: #009a61;
+}
+
+.affix-top .g-nav {
+	margin-top: -10px;
+}

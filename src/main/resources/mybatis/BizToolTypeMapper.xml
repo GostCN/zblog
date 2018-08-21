@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.cchcz.blog.dao.mapper.BizToolTypeMapper">
+    <resultMap id="rm" type="com.cchcz.blog.dao.beans.BizToolType">
+        <result property="id" jdbcType="BIGINT" column="id"/>
+        <result property="name" jdbcType="VARCHAR" column="name"/>
+        <result property="icon" jdbcType="VARCHAR" column="icon"/>
+        <result property="style" jdbcType="VARCHAR" column="style"/>
+        <result property="createTime" jdbcType="TIMESTAMP" column="create_time"/>
+        <result property="updateTime" jdbcType="TIMESTAMP" column="update_time"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+		id,
+        name,
+        icon,
+        style,
+		create_time,
+		update_time
+	</sql>
+
+    <select id="findPageBreakByCondition" parameterType="com.cchcz.blog.model.vo.ToolTypeConditionVO"
+            resultMap="rm">
+        SELECT
+        t.*
+        FROM
+        biz_tool_type t
+        WHERE
+        1 = 1
+        <if test="name != null">
+            AND t.name = #{name}
+        </if>
+        <if test="icon != null">
+            AND t.icon = #{icon}
+        </if>
+        <if test="style != null">
+            AND t.style = #{style}
+        </if>
+        <if test="id != null">
+            AND t.id = #{id}
+        </if>
+    </select>
+</mapper>
+

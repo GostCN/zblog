@@ -1,0 +1,63 @@
+package com.cchcz.blog.util;
+
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.stereotype.Component;
+
+@Component
+public class SpringContextUtil implements BeanFactoryAware {
+    private static BeanFactory beanFactory;
+
+    @Override
+    public void setBeanFactory(BeanFactory beanFactory_) throws BeansException {
+        beanFactory = beanFactory_;
+    }
+
+    public static Object getBean(String name) throws BeansException {
+        return beanFactory.getBean(name);
+    }
+
+    public static <T> T getBean(String name, Class<T> requiredType) throws BeansException {
+        return beanFactory.getBean(name, requiredType);
+    }
+
+    public static <T> T getBean(Class<T> requiredType) throws BeansException {
+        return (T) beanFactory.getBean(requiredType);
+    }
+
+    public static Object getBean(String name, Object[] args) throws BeansException {
+        return beanFactory.getBean(name, args);
+    }
+
+    public static boolean containsBean(String name) {
+        return beanFactory.containsBean(name);
+    }
+
+    public static boolean isSingleton(String name) throws NoSuchBeanDefinitionException {
+        return beanFactory.isSingleton(name);
+    }
+
+    public static boolean isPrototype(String name) throws NoSuchBeanDefinitionException {
+        return beanFactory.isPrototype(name);
+    }
+
+    public static <T> boolean isTypeMatch(String name, Class<T> targetType) throws NoSuchBeanDefinitionException {
+        return beanFactory.isTypeMatch(name, targetType);
+    }
+
+    public static Class<?> getType(String name) throws NoSuchBeanDefinitionException {
+        return beanFactory.getType(name);
+    }
+
+    public static String[] getAliases(String name) {
+        return beanFactory.getAliases(name);
+    }
+
+    public static BeanFactory getBeanFactory() {
+        return beanFactory;
+    }
+
+
+}
