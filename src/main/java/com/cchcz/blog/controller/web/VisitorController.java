@@ -16,6 +16,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
@@ -59,6 +60,9 @@ public class VisitorController {
             long num = vo.getNum();
             String nameValue = vo.getName();
             String location = nameValue.replaceAll("_", " ");
+            if (StringUtils.isEmpty(location) || location.contains("null")) {//兼容老数据
+                continue;
+            }
             if (!location.contains("其它") && !location.contains("中国")) {//兼容老数据
                 location = "中国 " + location;
             }

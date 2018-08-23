@@ -80,7 +80,9 @@ public class VisitorRankBiz {
             ZSetOperations.TypedTuple<Object> tuple = it.next();
             long num = Math.round(tuple.getScore());
             String location = String.valueOf(tuple.getValue());
-            visitorRankList.add(new VisitorRankVo(location, num));
+            if (null != location && location.replaceAll("_", "").trim().length() > 0) {
+                visitorRankList.add(new VisitorRankVo(location, num));
+            }
         }
         return visitorRankList;
     }

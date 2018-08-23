@@ -8,7 +8,7 @@
         <result property="country" jdbcType="VARCHAR" column="country"/>
         <result property="provice" jdbcType="VARCHAR" column="provice"/>
         <result property="city" jdbcType="VARCHAR" column="city"/>
-        <result property="num" jdbcType="BIGINT" column="nums"/>
+        <result property="num" jdbcType="BIGINT" column="num"/>
     </resultMap>
     <sql id="Base_Column_List">
 		id,

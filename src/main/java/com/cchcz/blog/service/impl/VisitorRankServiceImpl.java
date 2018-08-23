@@ -66,18 +66,6 @@ public class VisitorRankServiceImpl implements VisitorRankService {
     @Override
     public List<BizVisitorRank> listAll() {
         return visitorRankMapper.selectAll();
-        //if (CollectionUtils.isEmpty(list)) {
-        //    return null;
-        //}
-        //List<VisitorRankVo> voList = new ArrayList<>();
-        //for (Iterator<BizVisitorRank> it = list.iterator(); it.hasNext(); ) {
-        //    VisitorRankVo vo = new VisitorRankVo();
-        //    BizVisitorRank rank = it.next();
-        //    vo.setName(rank.getCountry() + "_" + rank.getProvice() + "_" + rank.getCity());
-        //    vo.setNum(rank.getNum());
-        //    voList.add(vo);
-        //}
-        //return voList;
     }
 
     @Override

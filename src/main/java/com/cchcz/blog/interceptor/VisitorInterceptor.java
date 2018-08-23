@@ -41,8 +41,6 @@ public class VisitorInterceptor extends HandlerInterceptorAdapter {
     private void recordVisitIp(HttpServletRequest request) {
         String uri = request.getRequestURI();
         String realIp = IpUtil.getRealIp(request);
-        // TODO: 2018/8/3  
-        //realIp = "202.108.14.240";
         if (uri.equals("/")
                 || uri.startsWith("/music")
                 || uri.startsWith("/onlineTool")
@@ -81,7 +79,6 @@ public class VisitorInterceptor extends HandlerInterceptorAdapter {
 
             VisitorAsyncTask visitorAsyncTask = SpringBeanFactory.getBean(VisitorAsyncTask.class);
             visitorAsyncTask.visitorAnalyze(realIp, currentDate);
-            //visitorAsyncTask.initTestIP();
         }
     }
 }

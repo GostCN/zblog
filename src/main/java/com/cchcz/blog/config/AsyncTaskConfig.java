@@ -67,7 +67,7 @@ public class AsyncTaskConfig {
         }
     }
 
-    @Scheduled(cron = "0 0 */6 * * ?")
+    @Scheduled(cron = "0 0 0/2 * * ?")
     private void syncVisitorRank() {
         try {
             visitorRankBiz.updateVisitorRank();

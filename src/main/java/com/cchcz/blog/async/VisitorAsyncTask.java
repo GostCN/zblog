@@ -7,6 +7,7 @@ import com.cchcz.blog.util.BaiduUtil;
 import com.cchcz.blog.util.SpringBeanFactory;
 import com.cchcz.blog.util.UrlBuildUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -41,6 +42,12 @@ public class VisitorAsyncTask {
                 JSONObject addressDetail = localtionContent.getJSONObject("address_detail");
                 String city = addressDetail.getString("city");
                 String province = addressDetail.getString("province");
+                if (StringUtils.isEmpty(province)) {
+                    province = "北京市";
+                }
+                if (StringUtils.isEmpty(city)) {
+                    province = "北京市";
+                }
                 location = "中国" + "_" + province + "_" + city;
                 JSONObject point = localtionContent.getJSONObject("point");
                 lng = point.getString("x");
@@ -50,12 +57,12 @@ public class VisitorAsyncTask {
                 lng = "1";
                 lat = "1";
             }
+            redisTemplate.opsForZSet().incrementScore("visitShowAll", location, 1);
+            redisTemplate.opsForZSet().add("visit_" + location, lng + "_" + lat, visitDate.getTime());
         } catch (Exception e) {
             log.error("VisitorAsyncTask调用百度接口异常,ip:" + ip, e);
         } finally {
             log.info("VisitorAsyncTask,location:{},lng:{},lat:{}", location, lng, lat);
-            redisTemplate.opsForZSet().incrementScore("visitShowAll", location, 1);
-            redisTemplate.opsForZSet().add("visit_" + location, lng + "_" + lat, visitDate.getTime());
         }
         return null;
     }

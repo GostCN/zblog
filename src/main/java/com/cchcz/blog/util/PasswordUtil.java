@@ -39,6 +39,6 @@ public class PasswordUtil {
         return AesUtil.decrypt(Md5Util.MD5(salt + CommonConstant.LDZHAO_SECURITY_KEY), encryptPassword);
     }
     public static void main(String[] args){
-        System.out.println(encrypt("chengzhang","zhangcheng0725"));
+        System.out.println(encrypt("002","002"));
     }
 }
