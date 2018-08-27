@@ -18,7 +18,7 @@ public class BizVisitorRank {
     private String country;
     private String provice;
     private String city;
-    private long num;
+    private Long num;
 
 
     @Override

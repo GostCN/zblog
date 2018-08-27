@@ -222,7 +222,7 @@ canonical="/${url?if_exists}">
             <#if subTypes?? && subTypes?size gt 0>
                 <#list subTypes as subType>
                     <@articleTag method="typeList" pageSize="6" typeId ="${subType.id}">
-                        <#if typeList?exists && (typeList?size > 4)>
+                        <#if typeList?exists && (typeList?size > 0)>
         <div class="col-xs-12 col-sm-6 col-md-6 blogweb-container">
             <div class="blogweb-box">
                 <div class="category">

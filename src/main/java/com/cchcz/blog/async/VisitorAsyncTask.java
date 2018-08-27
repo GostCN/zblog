@@ -44,9 +44,7 @@ public class VisitorAsyncTask {
                 String province = addressDetail.getString("province");
                 if (StringUtils.isEmpty(province)) {
                     province = "北京市";
-                }
-                if (StringUtils.isEmpty(city)) {
-                    province = "北京市";
+                    city = "北京市";
                 }
                 location = "中国" + "_" + province + "_" + city;
                 JSONObject point = localtionContent.getJSONObject("point");
@@ -66,13 +64,5 @@ public class VisitorAsyncTask {
         }
         return null;
     }
-
-    //public void initTestIP() {
-    //    Set<String> visitAllIp = Optional.ofNullable(redisTemplate.opsForSet().members("visitAll_ip")).orElse(Sets.newHashSet());
-    //    //Set<String> visitAllIp = new HashSet<>(Arrays.asList("202.108.14.240", "185.131.240.120"));
-    //    for (String ip : visitAllIp) {
-    //        visitorAnalyze(ip, new Date());
-    //    }
-    //}
 
 }

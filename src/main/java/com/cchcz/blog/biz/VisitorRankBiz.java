@@ -12,6 +12,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -35,12 +36,16 @@ public class VisitorRankBiz {
         Map<String, Long> map = new HashMap<>();
         for (Iterator<VisitorRankVo> it = entities.iterator(); it.hasNext(); ) {
             VisitorRankVo vo = it.next();
+            long num = vo.getNum();
+            if (num == 0) {
+                continue;
+            }
             String[] array = vo.getName().split("_");
             BizVisitorRank so = new BizVisitorRank();
             VisitorUtil.buildBizVisitorRank(array, so);
-            so.setNum(vo.getNum());
+            so.setNum(num);
             list.add(so);
-            map.put(vo.getName(), vo.getNum());
+            map.put(vo.getName(), num);
         }
         //log.info("updateVisitorRank_ranks=" + JSON.toJSONString(ranks));
         log.info("updateVisitorRank_entities=" + JSON.toJSONString(entities));
@@ -49,6 +54,9 @@ public class VisitorRankBiz {
         } else {
             for (Iterator<BizVisitorRank> it = ranks.iterator(); it.hasNext(); ) {
                 BizVisitorRank rank = it.next();
+                if (StringUtils.isEmpty(rank) || StringUtils.isEmpty(rank.getCountry())) {
+                    continue;
+                }
                 String name = rank.getCountry() + "_" + rank.getProvice() + "_" + rank.getCity();
                 if (map.containsKey(name)) {
                     rank.setNum(map.get(name));
@@ -60,6 +68,9 @@ public class VisitorRankBiz {
             for (Map.Entry<String, Long> entry : map.entrySet()) {
                 String[] array = entry.getKey().split("_");
                 long num = entry.getValue();
+                if (num == 0) {
+                    continue;
+                }
                 BizVisitorRank vo = new BizVisitorRank();
                 VisitorUtil.buildBizVisitorRank(array, vo);
                 vo.setNum(num);
