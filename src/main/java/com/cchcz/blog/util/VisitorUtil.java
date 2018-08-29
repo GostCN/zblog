@@ -18,15 +18,6 @@ public class VisitorUtil {
             vo.setCountry(array[0]);
             vo.setProvice(array[1]);
             vo.setCity(array[2]);
-        } else if (array.length == 2) {//兼容老数据
-            if ("其它".equals(array[0])) {
-                vo.setContinent("其它");
-            } else {
-                vo.setContinent("亚洲");
-            }
-            vo.setCountry("中国");
-            vo.setProvice(array[0]);
-            vo.setCity(array[1]);
         }
     }
 

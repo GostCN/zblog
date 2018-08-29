@@ -12,14 +12,12 @@ import com.cchcz.blog.service.SysConfigService;
 import com.cchcz.blog.util.BaiduUtil;
 import com.cchcz.blog.util.DateUtil;
 import com.cchcz.blog.util.UrlBuildUtil;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,44 +50,14 @@ public class VisitorController {
 
     @RequestMapping("/")
     public String index(Model model) {
-        List<VisitorVo> visitorVoList = Lists.newLinkedList();
-        List<VisitorRankVo> visitorRankList = Lists.newLinkedList();
-        List<VisitorRankVo> entities = visitorRankBiz.getVisitorRankVoList();
-        for (Iterator<VisitorRankVo> it = entities.iterator(); it.hasNext(); ) {
-            VisitorRankVo vo = it.next();
-            long num = vo.getNum();
-            String nameValue = vo.getName();
-            String location = nameValue.replaceAll("_", " ");
-            if (StringUtils.isEmpty(location) || location.contains("null")) {//兼容老数据
-                continue;
-            }
-            if (!location.contains("其它") && !location.contains("中国")) {//兼容老数据
-                location = "中国 " + location;
-            }
-            visitorRankList.add(new VisitorRankVo(location, num));
-
-            long startScore = 1533052800000L;//2018-08-01 00:00:00
-            long endScore = System.currentTimeMillis();
-            Set<ZSetOperations.TypedTuple<Object>> visitLatLng = redisTemplate.opsForZSet().reverseRangeByScoreWithScores("visit_" + nameValue, startScore, endScore);
-            log.info("visitLatLng:{}, nameValue:{}, num:{}", visitLatLng.size(), location, num);
-            Iterator<ZSetOperations.TypedTuple<Object>> itLagLng = visitLatLng.iterator();
-            while (itLagLng.hasNext()) {
-                ZSetOperations.TypedTuple<Object> tupleLagLng = itLagLng.next();
-                String latLng = String.valueOf(tupleLagLng.getValue());
-                String time = String.valueOf(tupleLagLng.getScore());
-                String lng = "", lat = "";
-                if (latLng.split("_").length == 2) {//117.20426333779_39.138027950138
-                    lng = latLng.split("_")[0];// 经度
-                    lat = latLng.split("_")[1];   // 纬度
-                } else {
-                    lng = lat = "1";
-                }
-                log.info("VisitorVo,latLng:{},lng:{},lat:{},score:{}", latLng, lng, lat, time);
-                if (!location.contains("其它")) {
-                    visitorVoList.add(VisitorVo.create(location, lat, lng));
-                }
-            }
-        }
+        Pair<List<VisitorRankVo>, List<VisitorVo>> pair = visitorRankBiz.getVisitorLatlngList();
+        List<VisitorRankVo> visitorRankList = pair.getLeft();
+        List<VisitorVo> visitorVoList = pair.getRight();
+        visitorRankList.stream().forEach(so -> {
+            String name = so.getName();
+            name = name.replaceAll("_", " ");
+            so.setName(name);
+        });
         model.addAttribute("topList", visitorRankList);
         model.addAttribute("visitorVoList", JSONArray.toJSONString(visitorVoList));
         return "/visitor";
