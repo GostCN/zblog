@@ -38,8 +38,9 @@ public class VisitorRankBiz {
         Map<String, Long> map = new HashMap<>();
         for (Iterator<VisitorRankVo> it = entities.iterator(); it.hasNext(); ) {
             VisitorRankVo vo = it.next();
+            String name = vo.getName();
             long num = vo.getNum();
-            if (num == 0) {
+            if ((StringUtils.isEmpty(name) && name.trim().length() == 0) || num == 0) {
                 continue;
             }
             String[] array = vo.getName().split("_");
@@ -105,6 +106,10 @@ public class VisitorRankBiz {
         for (Iterator<VisitorRankVo> it = entities.iterator(); it.hasNext(); ) {
             VisitorRankVo vo = it.next();
             String location = vo.getName();
+            long num = vo.getNum();
+            if ((StringUtils.isEmpty(location) && location.trim().length() == 0) || num == 0) {
+                continue;
+            }
             long startScore = 1533052800000L;//2018-08-01 00:00:00
             long endScore = System.currentTimeMillis();
             Set<ZSetOperations.TypedTuple<Object>> visitLatLng = redisTemplate.opsForZSet().reverseRangeByScoreWithScores("visit_" + location, startScore, endScore);

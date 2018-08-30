@@ -55,8 +55,10 @@ public class VisitorAsyncTask {
                 lng = "1";
                 lat = "1";
             }
-            redisTemplate.opsForZSet().incrementScore("visitShowAll", location, 1);
-            redisTemplate.opsForZSet().add("visit_" + location, lng + "_" + lat, visitDate.getTime());
+            if (StringUtils.isNotEmpty(location) && location.trim().length() > 0) {
+                redisTemplate.opsForZSet().incrementScore("visitShowAll", location, 1);
+                redisTemplate.opsForZSet().add("visit_" + location, lng + "_" + lat, visitDate.getTime());
+            }
         } catch (Exception e) {
             log.error("VisitorAsyncTask调用百度接口异常,ip:" + ip, e);
         } finally {
